@@ -1,6 +1,24 @@
-# Welcome to the Fabric-Data-Warehousing-SQL-Code wiki!
+# Fabric-Data-Warehousing-SQL-Code
 
 The pages displayed below correspond to the lectures in the section **Data Warehousing and Power BI**
+1. [Create and Drop Schemas](#create-and-drop-schemas)
+1. [Create and Drop Tables](#create-and-drop-tables)
+1. [Inserting Records Into a Table (and first look at the Select Statement)](#inserting-records-into-a-table-and-first-look-at-the-select-statement)
+1. [The Select Statement](#the-select-statement)
+1. [Selecting Distinct Records](#selecting-distinct-records)
+1. [Functions and Expressions](#functions-and-expressions)
+1. [Ordering and Limiting your Results](#ordering-and-limiting-your-results)
+1. [Filtering Records](#filtering-records)
+1. [Grouping and Aggregating](#grouping-and-aggregating)
+1. [Joining Tables](#joining-tables)
+1. [SQL Execution Order](#sql-execution-order)
+1. [Create Table As Select](#create-table-as-select)
+1. [Updating and Deleting Records](#updating-and-deleting-records)
+1. [Subqueries](#subqueries)
+1. [Views](#views)
+1. [Zero Copy Clones and Time Travel](#zero-copy-clones-and-time-travel)
+1. [Stored Procedures](#stored-procedures)
+1. [Preparing the Presentation Layer and Semantic Model](#preparing-the-presentation-layer-and-semantic-model)
 
 ## Create and Drop Schemas
 ### Links and Resources
@@ -15,7 +33,7 @@ CREATE SCHEMA tutorial_schema;
 ```sql
 DROP SCHEMA tutorial_schema;
 ```
-
+[top](#Fabric-Data-Warehousing-SQL-Code)
 ## Create and Drop Tables
 ### Links and Resources
 https://learn.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=fabric
@@ -44,6 +62,7 @@ create table new_table_1
 DROP TABLE WarehouseTutorial.dbo.new_table_1;
 DROP TABLE WarehouseTutorial.tutorial_schema.new_table_1;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Inserting Records Into a Table (and first look at the Select Statement.md)
 ### Links and Resources
@@ -159,6 +178,7 @@ select * from WarehouseTutorial.tutorial_schema.new_table_2
 drop table WarehouseTutorial.tutorial_schema.new_table_1;
 drop table WarehouseTutorial.tutorial_schema.new_table_2;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## The Select Statement
 ```sql
@@ -213,6 +233,7 @@ select t1.id, t1.price as unit_price from tutorial_schema.orders as t1;
 ```sql
 select t1.id, t1.price as unit_price from tutorial_schema.orders t1;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Selecting Distinct Records
 ```sql
@@ -226,6 +247,7 @@ select distinct category, title from tutorial_schema.products;
 ```sql
 select distinct * from tutorial_schema.products;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Functions and Expressions
 ### Links and Resources
@@ -280,6 +302,7 @@ case
 end as price_class
 from tutorial_schema.orders;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Ordering and Limiting your Results
 ### Links and Resources
@@ -306,6 +329,7 @@ select * from tutorial_schema.orders order by user_id desc, created at desc;
 ```sql
 select top 10 * from tutorial_schema.orders;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Filtering Records
 ### Links and Resources
@@ -353,6 +377,7 @@ from tutorial_schema.products
 where category = 'Gadget'
 order by price desc;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Grouping and Aggregating
 ### Links and Resources
@@ -403,6 +428,7 @@ where category != 'Widget'
 group by category
 having count(*)>50;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Joining Tables
 ### Links and Resources
@@ -456,6 +482,7 @@ ON o.product_id = p.id
 LEFT JOIN tutorial_schema.users u
 ON o.user_id = u.id;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## SQL Execution Order
 ### Links and Resources
@@ -508,6 +535,7 @@ left join tutorial_schema.products p
 on o.product_id = p.id
 group by p.category;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Create Table As Select
 ### Links and Resources
@@ -534,6 +562,7 @@ on o.product_id = p.id
 group by p.vendor
 order by total_quantity desc;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Updating and Deleting Records
 ### Links and Resources
@@ -570,6 +599,7 @@ delete from tutorial_schema.users_ctas;
 ```sql
 drop table tutorial_schema.users_ctas;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Subqueries
 ### Links and Resources
@@ -602,12 +632,13 @@ WHERE id in (
 	     order by sum(quantity) desc
 	     );
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Views
-###Links and Resources
+### Links and Resources
 https://learn.microsoft.com/en-us/sql/relational-databases/views/views?view=sql-server-ver16
 
-###SQL Code
+### SQL Code
 ```sql
 CREATE VIEW tutorial_schema.vw_customer_order_qty
 AS
@@ -624,6 +655,7 @@ GROUP BY u.id, u.name;
 ```sql
 DROP VIEW tutorial_schema.vw_customer_order_qty;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Zero Copy Clones and Time Travel
 ### Links and Resources
@@ -649,6 +681,7 @@ DELETE FROM tutorial_schema.users_clone where source = 'Organic';
 SELECT * FROM tutorial_schema.users_clone 
 OPTION (FOR TIMESTAMP AS OF 'insert timestamp here');
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Stored Procedures
 ### Links and Resources
@@ -705,6 +738,7 @@ SELECT * FROM tutorial_schema.orders WHERE total > @price and created_at > @inpu
 ```sql
 DROP PROCEDURE tutorial_schema.demo_proc;
 ```
+[top](#Fabric-Data-Warehousing-SQL-Code)
 
 ## Preparing the Presentation Layer and Semantic Model
 ### SQL Code
