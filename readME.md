@@ -64,7 +64,7 @@ DROP TABLE WarehouseTutorial.tutorial_schema.new_table_1;
 ```
 [top](#Fabric-Data-Warehousing-SQL-Code)
 
-## Inserting Records Into a Table (and first look at the Select Statement.md)
+## Inserting Records Into a Table (and first look at the Select Statement)
 ### Links and Resources
 https://learn.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=fabric
 
